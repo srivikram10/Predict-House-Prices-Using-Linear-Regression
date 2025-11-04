@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>House Price Prediction (India)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🏡 House Price Predictor</h1>
+        <form id="predict-form">
+            <input type="text" name="location" placeholder="Enter Location (e.g., Chennai)" required>
+            <input type="number" name="area" placeholder="Enter Area (sq.ft)" min="1" required>
+            <input type="number" name="bedrooms" placeholder="Bedrooms" min="1" required>
+            <input type="number" name="bathrooms" placeholder="Bathrooms" min="1" required>
+            <input type="number" name="sqft" placeholder="Square Feet" min="1" required>
+            <input type="text" name="city_type" placeholder="Urban / Rural" required>
+            <button type="submit">Predict Price</button>
+        </form>
+        <div id="loading" style="display:none;">🔄 Predicting...</div>
+        <h2 id="result" class="result"></h2>
+        {% if prediction_text %}
+            <h2 class="result">{{ prediction_text }}</h2>
+        {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
